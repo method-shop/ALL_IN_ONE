@@ -1,3 +1,11 @@
+import telebot
+from telebot.types import CallbackQuery
+import requests
+from io import BytesIO
+
+# Replace 'YOUR_BOT_TOKEN' with your bot's token from @BotFather
+BOT_TOKEN = "7641333049:AAHRXsz0G9FqIykeqp-Se9llS4MN7ur7eDQ"
+bot = telebot.TeleBot(BOT_TOKEN)
 
 # Callback query handler
 @bot.callback_query_handler(func=lambda call: True)
@@ -17,13 +25,17 @@ def callback_handler(call: CallbackQuery):
         🏷️ **Name**: {first_name} {last_name}
         📝 **Username**: {username}
         
-        💬 **Bio**: {user.bio if user.bio else "No bio available."}
+        💬 **Bio**: {user.bio if hasattr(user, 'bio') and user.bio else "No bio available."}
         
         🎲 *You are in the game of Telegram Monopoly!* 🎲
         """
 
-        # Send the formatted Monopoly profile message
-        bot.send_message(call.message.chat.id, monopoly_style_message)
+        # Ensure the message is not empty
+        if monopoly_style_message.strip():
+            # Send the formatted Monopoly profile message
+            bot.send_message(call.message.chat.id, monopoly_style_message)
+        else:
+            bot.send_message(call.message.chat.id, "Sorry, we couldn't fetch your profile data.")
 
         # Send profile picture (if available)
         try:
@@ -46,4 +58,4 @@ def callback_handler(call: CallbackQuery):
 
 # Polling
 print("Bot is running...")
-bot.polling()
+bot.polling(none_stop=True)
