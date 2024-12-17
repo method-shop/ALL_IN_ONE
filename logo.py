@@ -15,7 +15,7 @@ if not os.path.exists('images'):
 
 user_queries = {}
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['logo'])
 def start(message):
     welcome_text = "Welcome! Enter a text to convert it to a logo (in English only).\nBY @ziddi_shop"
 
