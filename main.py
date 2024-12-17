@@ -21,6 +21,7 @@ def start_handler(message):
         InlineKeyboardButton("MUSIC", callback_data="music"),
         InlineKeyboardButton("IMAGE GENERATE", callback_data="image_generate"),
         InlineKeyboardButton("GPT", callback_data="gpt"),
+        InlineKeyboardButton("LOGO", callback_data="logo"),
     ]
     markup.add(*buttons)  # Add buttons to the markup
     
@@ -54,6 +55,11 @@ def callback_handler(call: CallbackQuery):
         elif call.data == "gpt":
             # Run gpt.py script
             result = subprocess.run(['python', 'gpt.py'], capture_output=True, text=True)
+            bot.send_message(call.message.chat.id, result.stdout)  # Send the output of the script
+
+        if call.data == "logo":
+            # Run get_id.py script
+            result = subprocess.run(['python', 'logo.py'], capture_output=True, text=True)
             bot.send_message(call.message.chat.id, result.stdout)  # Send the output of the script
             
         else:
