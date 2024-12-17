@@ -3,7 +3,7 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQu
 import subprocess  # To run the external Python scripts
 
 # Replace 'YOUR_BOT_TOKEN' with your bot's token from @BotFather
-BOT_TOKEN = "YOUR_BOT_TOKEN"
+BOT_TOKEN = "7641333049:AAHRXsz0G9FqIykeqp-Se9llS4MN7ur7eDQ"
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # Start command handler
