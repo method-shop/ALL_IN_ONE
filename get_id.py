@@ -1,12 +1,4 @@
-import telebot
-from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-import requests
-from io import BytesIO
-import random
 
-# Replace 'YOUR_BOT_TOKEN' with your bot's token from @BotFather
-BOT_TOKEN = "7641333049:AAHRXsz0G9FqIykeqp-Se9llS4MN7ur7eDQ"
-bot = telebot.TeleBot(BOT_TOKEN)
 # Callback query handler
 @bot.callback_query_handler(func=lambda call: True)
 def callback_handler(call: CallbackQuery):
